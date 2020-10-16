@@ -1,0 +1,15 @@
+<RCC>
+    <qresource prefix="/">
+        <file>qml/TranslationMainWindow.qml</file>
+        <file>drawable/exchange.png</file>
+        <file>qml/LangTabLayout.qml</file>
+        <file>drawable/arrow_down.png</file>
+        <file>drawable/lang_checked.png</file>
+        <file>drawable/settings.png</file>
+        <file>drawable/translate.png</file>
+        <file>qml/SettingsWidget.qml</file>
+        <file>qml/SettingItemEngine.qml</file>
+        <file>qml/SettingItemProxy.qml</file>
+        <file>qml/SettingItemApi.qml</file>
+    </qresource>
+</RCC>

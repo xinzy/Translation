@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file>raw/lang.baidu.json</file>
+    </qresource>
+</RCC>

@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+        <file>resource/icon/baidu.png</file>
+        <file>resource/icon/google.png</file>
+        <file>resource/icon/youdao.png</file>
+    </qresource>
+</RCC>

@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file>raw/lang.youdao.json</file>
+    </qresource>
+</RCC>

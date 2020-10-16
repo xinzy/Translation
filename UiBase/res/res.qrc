@@ -1,0 +1,30 @@
+<RCC>
+    <qresource prefix="/">
+        <file>qml/XButton.qml</file>
+        <file>qml/XButtonStyle.qml</file>
+        <file>qml/XShadow.qml</file>
+        <file>qml/XText.qml</file>
+        <file>qml/styles/XButtonStyleError.qml</file>
+        <file>qml/styles/XButtonStyleGhostPrimary.qml</file>
+        <file>qml/styles/XButtonStyleGhostSecondary.qml</file>
+        <file>qml/styles/XButtonStyleGhostTertiary.qml</file>
+        <file>qml/styles/XButtonStylePrimary.qml</file>
+        <file>qml/styles/XButtonStyles.qml</file>
+        <file>qml/styles/XButtonStyleSecondary.qml</file>
+        <file>qml/styles/XButtonStyleSuccess.qml</file>
+        <file>qml/styles/XButtonStyleTabBar.qml</file>
+        <file>qml/styles/XButtonStyleTertiary.qml</file>
+        <file>qml/styles/XButtonStyleWarn.qml</file>
+        <file>qml/styles/XTextStyleBlack.qml</file>
+        <file>qml/styles/XTextStyleWhite.qml</file>
+        <file>qml/XHandler.qml</file>
+        <file>qml/XTextStyle.qml</file>
+        <file>drawable/loading.gray.gif</file>
+        <file>drawable/close.png</file>
+        <file>drawable/loading.blue.gif</file>
+        <file>drawable/loading.white.gif</file>
+        <file>qml/XMouseArea.qml</file>
+        <file>js/XFunctions.js</file>
+        <file>qml/XImageButton.qml</file>
+    </qresource>
+</RCC>

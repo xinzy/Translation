@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>js/Google.js</file>
+        <file>raw/lang.google.json</file>
+    </qresource>
+</RCC>
