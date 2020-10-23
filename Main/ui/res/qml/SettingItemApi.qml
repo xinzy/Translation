@@ -1,4 +1,5 @@
 import QtQuick 2.0
+import QtQuick.Controls 2.15
 
 import UiBase 1.0
 import "qrc:/qml"
@@ -10,13 +11,23 @@ Rectangle {
 
     XText {
         id: destText
-        anchors.left: parent.left
-        anchors.leftMargin: Destiny.dp(16)
         anchors.top: parent.top
         anchors.topMargin: Destiny.dp(24)
-        xStyle: XTextStyleBlack { size: XTextStyle.Size.AssistPrimary }
-        text: "选择翻译引擎"
+        anchors.horizontalCenter: parent.horizontalCenter
+        xStyle: XTextStyleBlack { size: XTextStyle.Size.Content }
+        text: "Api设置"
     }
 
+    GroupBox {
 
+        Column {
+
+            RadioButton {
+                text: "1"
+            }
+            RadioButton {
+                text: "2"
+            }
+        }
+    }
 }

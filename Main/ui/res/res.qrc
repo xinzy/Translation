@@ -11,5 +11,7 @@
         <file>qml/SettingItemEngine.qml</file>
         <file>qml/SettingItemProxy.qml</file>
         <file>qml/SettingItemApi.qml</file>
+        <file>qml/SettingButtonBar.qml</file>
+        <file>qml/InputContent.qml</file>
     </qresource>
 </RCC>

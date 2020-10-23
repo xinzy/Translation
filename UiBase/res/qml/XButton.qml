@@ -106,7 +106,7 @@ Rectangle {
 
     signal clicked();
 
-    MouseArea {
+    XMouseArea {
         id: mouseArea
         anchors.fill: parent
         onClicked: {
@@ -120,7 +120,7 @@ Rectangle {
     }
 
     function getColor() {
-        var state = mouseArea.state
+        var state = mouseArea.status
 
         if(!enabled) {
             return xStyle.colorDisabled
@@ -130,9 +130,9 @@ Rectangle {
             return xStyle.colorLoading
         }
 
-        if(state === mouseArea.stateHovered) {
+        if(state === mouseArea.statusHovered) {
             return xStyle.colorHovered
-        } else if(state === mouseArea.statePressed) {
+        } else if(state === mouseArea.statusPressed) {
             return xStyle.colorPressed
         } else {
             return xStyle.color
@@ -140,15 +140,15 @@ Rectangle {
     }
 
     function getTextColor() {
-        var state = mouseArea.state
+        var state = mouseArea.status
 
         if(!enabled) {
             return xStyle.textColorDisabled
         }
 
-        if(state === mouseArea.stateHovered) {
+        if(state === mouseArea.statusHovered) {
             return xStyle.textColorHovered
-        } else if(state === mouseArea.statePressed) {
+        } else if(state === mouseArea.statusPressed) {
             return xStyle.textColorPressed
         } else {
             return xStyle.textColor
@@ -156,7 +156,7 @@ Rectangle {
     }
 
     function getBorderColor() {
-        var state = mouseArea.state
+        var state = mouseArea.status
 
         if(!enabled) {
             return xStyle.borderColorDisabled
@@ -166,9 +166,9 @@ Rectangle {
             return xStyle.borderColorLoading
         }
 
-        if(state === mouseArea.stateHovered) {
+        if(state === mouseArea.statusHovered) {
             return xStyle.borderColorHovered
-        } else if(state === mouseArea.statePressed) {
+        } else if(state === mouseArea.statusPressed) {
             return xStyle.borderColorPressed
         } else {
             return xStyle.borderColor

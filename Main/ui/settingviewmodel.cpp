@@ -1,5 +1,6 @@
 #include "settingviewmodel.h"
 
+
 SettingViewModel::SettingViewModel(QObject *parent)
     : QObject(parent)
 {
@@ -11,4 +12,14 @@ SettingViewModel::SettingViewModel(QObject *parent)
 QList<SettingItem> SettingViewModel::settings() const
 {
     return mSettings;
+}
+
+QList<TranslationEngine> SettingViewModel::engines() const
+{
+    return Config::instance()->availableEngines();
+}
+
+int SettingViewModel::currentEngine() const
+{
+    return Config::instance()->currentEngine();
 }

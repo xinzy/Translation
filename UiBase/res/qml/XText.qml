@@ -2,7 +2,6 @@
 import QtQuick.Controls 2.5
 
 import UiBase 1.0
-import "./"
 
 Text {
     property bool singleLine: false

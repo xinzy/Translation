@@ -1,6 +1,8 @@
 import QtQuick 2.0
 import UiBase 1.0
 
+import "../js/XConst.js" as Const
+
 QtObject {
 
     /// 主题色
@@ -26,9 +28,9 @@ QtObject {
 
     function fontFamily() {
         if (fontBold) {
-            return "Microsoft YaHei";
+            return Const.DefaultFont;
         } else {
-            return "Microsoft YaHei";
+            return Const.DefaultFont;
         }
     }
 

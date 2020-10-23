@@ -1,7 +1,7 @@
 import QtQuick 2.0
 
 import UiBase 1.0
-import "./"
+import "../js/XConst.js" as Const
 
 QtObject {
 
@@ -18,7 +18,6 @@ QtObject {
     property int width: getWidth(size)
     property int height: getHeight(size)
 
-    // if set this to 1.0, would use xxxColorDisabled source
     property var opacityDisabled: colorDisabled == color ? 0.3 : 1
 
     property var color : "#008FFF"
@@ -32,7 +31,7 @@ QtObject {
     property var textColorPressed: "#FFFFFF"
     property var textColorDisabled: textColor
 
-    property var fontFamily: "Microsoft YaHei"
+    property var fontFamily: Const.DefaultFont
     property int fontPixelSize: getFontPixelSize(size)
     property var fontBold: false
     property var fontItalic: false
@@ -66,29 +65,28 @@ QtObject {
     property int mediumFontPixelSize: Destiny.dp(16)
 
     property int smallWidth: Destiny.dp(84)
-    property int smallHeight: Destiny.dp(40)
-    property int smallFontPixelSize: Destiny.dp(16)
+    property int smallHeight: Destiny.dp(36)
+    property int smallFontPixelSize: Destiny.dp(14)
 
     function getWidth(size) {
-//        switch(size) {
-//        case TalButtonStyle.Size.L:
-//            return largeWidth;
-//        case TalButtonStyle.Size.M:
-//            return mediumWidth;
-//        case TalButtonStyle.Size.S:
-//            return smallWidth;
-//        }
-//        return mediumWidth;
-        return 0;
+        switch(size) {
+        case XButtonStyle.Size.L:
+            return largeWidth;
+        case XButtonStyle.Size.M:
+            return mediumWidth;
+        case XButtonStyle.Size.S:
+            return smallWidth;
+        }
+        return mediumWidth;
     }
 
     function getHeight(size) {
         switch(size) {
-        case TalButtonStyle.Size.L:
+        case XButtonStyle.Size.L:
             return largeHeight;
-        case TalButtonStyle.Size.M:
+        case XButtonStyle.Size.M:
             return mediumHeight;
-        case TalButtonStyle.Size.S:
+        case XButtonStyle.Size.S:
             return smallHeight;
         }
         return mediumHeight;
@@ -96,11 +94,11 @@ QtObject {
 
     function getFontPixelSize(size) {
         switch(size) {
-        case TalButtonStyle.Size.L:
+        case XButtonStyle.Size.L:
             return largeFontPixelSize;
-        case TalButtonStyle.Size.M:
+        case XButtonStyle.Size.M:
             return mediumFontPixelSize;
-        case TalButtonStyle.Size.S:
+        case XButtonStyle.Size.S:
             return smallFontPixelSize;
         }
         return mediumFontPixelSize;

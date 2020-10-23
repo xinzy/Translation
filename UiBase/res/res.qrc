@@ -26,5 +26,7 @@
         <file>qml/XMouseArea.qml</file>
         <file>js/XFunctions.js</file>
         <file>qml/XImageButton.qml</file>
+        <file>qml/XRadioButton.qml</file>
+        <file>js/XConst.js</file>
     </qresource>
 </RCC>
