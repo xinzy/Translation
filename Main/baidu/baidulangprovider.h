@@ -1,11 +1,17 @@
 #ifndef BAIDULANGPROVIDER_H
 #define BAIDULANGPROVIDER_H
 
-#include "baidurestservice.h"
-
 #include <QDebug>
-
 #include <core/langprovider.h>
+#include <QRandomGenerator>
+
+#include <http/httpmanager.h>
+#include "translationresult.h"
+
+
+#define BAIDU_APP_ID "20200914000565830"
+#define BAIDU_APP_SERCERT "iYohXtxWzMtlUGgATcJh"
+#define BAIDU_API_URL "http://api.fanyi.baidu.com/api/trans/vip/translate"
 
 class BaiduLangProvider : public LangProvider
 {
@@ -20,7 +26,10 @@ public:
     virtual void translate(QString input, QString sourceCode, QString targetCode) override;
 
 private:
-    BaiduRestService *mService;
+    QString createRandom();
+    QString makeSign(QString &text, QString &salt);
+
+private:
 };
 
 #endif // BAIDULANGPROVIDER_H

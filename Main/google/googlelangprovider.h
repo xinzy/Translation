@@ -1,9 +1,15 @@
 #ifndef GOOGLELANGPROVIDER_H
 #define GOOGLELANGPROVIDER_H
 
-#include "googlerestservice.h"
+#include "googleutils.h"
+#include "googleutils.h"
 
 #include <core/langprovider.h>
+#include <http/httpmanager.h>
+
+#include <QUrl>
+
+#define GOOGLE_BASE_API "https://translate.google.cn/translate_a/single"
 
 class GoogleLangProvider : public LangProvider
 {
@@ -14,9 +20,6 @@ public:
 
     virtual void translate(QString input, QString sourceCode, QString targetCode);
 
-
-private:
-    GoogleRestService mService;
 };
 
 #endif // GOOGLELANGPROVIDER_H

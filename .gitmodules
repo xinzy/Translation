@@ -1,3 +1,6 @@
-[submodule "thirdparty/qtpromise"]
-	path = thirdparty/qtpromise
+[submodule "QtJsonSerializer"]
+	path = QtJsonSerializer
+	url = https://github.com/Skycoder42/QtJsonSerializer.git
+[submodule "QtPromise"]
+	path = QtPromise
 	url = https://github.com/simonbrunel/qtpromise.git

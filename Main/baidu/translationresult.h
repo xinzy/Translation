@@ -28,7 +28,7 @@ class TranslationResult
 
     Q_PROPERTY(QString from MEMBER from)
     Q_PROPERTY(QString to MEMBER to)
-    Q_PROPERTY(QList<ResultItem*> result MEMBER result)
+    Q_PROPERTY(QList<ResultItem> trans_result MEMBER result)
 
 public:
     Q_INVOKABLE TranslationResult();
@@ -38,12 +38,12 @@ public:
     QString from;
     QString to;
 
-    QList<ResultItem*> result;
+    QList<ResultItem> result;
 };
 
 Q_DECLARE_METATYPE(TranslationResult)
 
-QDebug operator<<(QDebug debug, ResultItem item);
-QDebug operator<<(QDebug debug, TranslationResult item);
+QDebug operator<<(QDebug debug, ResultItem &item);
+QDebug operator<<(QDebug debug, TranslationResult &item);
 
 #endif // TRANSLATIONRESULT_H

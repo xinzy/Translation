@@ -3,7 +3,7 @@ QT       += widgets quick quickwidgets qml script
 
 TEMPLATE = app
 TARGET = Translation
-CONFIG += c++11
+CONFIG += c++17
 
 include(../config.pri)
 RC_ICONS = "Translation.ico"
@@ -35,11 +35,18 @@ include(youdao/youdao.pri)
 include(utils/utils.pri)
 include(ui/ui.pri)
 include(http/http.pri)
+include(../QtPromise/qtpromise.pri)
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../QtJsonSerializer/lib/ -lQt5JsonSerializer
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../QtJsonSerializer/lib/ -lQt5JsonSerializerd
+else:unix: LIBS += -L$$OUT_PWD/../QtJsonSerializer/lib/ -lQt5JsonSerializer
+
+INCLUDEPATH += $$OUT_PWD/../QtJsonSerializer/include/
 
 win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../UiBase/release/ -lUiBase
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../UiBase/debug/ -lUiBase

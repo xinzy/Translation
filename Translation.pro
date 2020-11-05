@@ -4,14 +4,9 @@ include(config.pri)
 
 SUBDIRS += \
     Main \
-#    log4qt \
-#    QtJsonSerializer \
     UiBase \
     thirdparty \
-#    QtRestClient \
-#    QtPromise \
-
+    QtJsonSerializer \
 
 
 Main.depends = UiBase
-#QtRestClient.depends = QtJsonSerializer

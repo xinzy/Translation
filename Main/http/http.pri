@@ -1,8 +1,8 @@
 
 SOURCES +=  \
     $$PWD/baseapi.cpp \
-    $$PWD/http.cpp
+    $$PWD/httpmanager.cpp
 
 HEADERS +=  \
     $$PWD/baseapi.h \
-    $$PWD/http.h
+    $$PWD/httpmanager.h
