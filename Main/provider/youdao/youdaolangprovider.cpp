@@ -1,5 +1,9 @@
 #include "youdaolangprovider.h"
 
+#include <http/httpmanager.h>
+#include <utils/config.h>
+#include "youdaotranslateresult.h"
+
 YoudaoLangProvider::YoudaoLangProvider(QObject *parent)
     : LangProvider(parent)
 {
@@ -15,7 +19,7 @@ void YoudaoLangProvider::translate(QString text, QString sourceCode, QString tar
 
     HttpManager::get(YOUDAO_BASE_API)
             ->addParam("signType", "v3")
-            ->addParam("appKey", YOUDAO_APP_ID)
+            ->addParam("appKey", appId())
             ->addParam("from", sourceCode)
             ->addParam("to", targetCode)
             ->addParam("q", text)
@@ -40,9 +44,19 @@ QString YoudaoLangProvider::makeSign(QString &text, QString &salt, QString &time
     {
         input = text.mid(0, 10) + QString::number(text.length()) + text.mid(text.length() - 10);
     }
-    QString content = YOUDAO_APP_ID;
-    content.append(input).append(salt).append(timestamp).append(YOUDAO_APP_SECERT);
+    QString content = appId();
+    content.append(input).append(salt).append(timestamp).append(appSecert());
 
     qDebug() << "sign content: " << content;
     return QCryptographicHash::hash(content.toUtf8(), QCryptographicHash::Sha256).toHex();
+}
+
+QString YoudaoLangProvider::appId()
+{
+    return Config::instance()->youdaoApiConfig().appId.isEmpty() ? YOUDAO_APP_ID : Config::instance()->youdaoApiConfig().appId;
+}
+
+QString YoudaoLangProvider::appSecert()
+{
+    return Config::instance()->youdaoApiConfig().appSecert.isEmpty() ? YOUDAO_APP_SECERT : Config::instance()->youdaoApiConfig().appSecert;
 }

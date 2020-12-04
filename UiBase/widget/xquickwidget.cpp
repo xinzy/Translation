@@ -1,4 +1,5 @@
 #include "xquickwidget.h"
+#include <QQmlContext>
 
 XQuickWidget::XQuickWidget(QWidget *parent) : QQuickWidget(parent)
 {
@@ -10,4 +11,5 @@ XQuickWidget::XQuickWidget(QWidget *parent) : QQuickWidget(parent)
     setAttribute(Qt::WA_DeleteOnClose);
 
     setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+    rootContext()->setContextProperty("rootWidget", this);
 }

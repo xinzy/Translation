@@ -1,13 +1,9 @@
 #ifndef BAIDULANGPROVIDER_H
 #define BAIDULANGPROVIDER_H
 
-#include <QDebug>
 #include <core/langprovider.h>
-#include <QRandomGenerator>
 
-#include <http/httpmanager.h>
 #include "translationresult.h"
-
 
 #define BAIDU_APP_ID "20200914000565830"
 #define BAIDU_APP_SERCERT "iYohXtxWzMtlUGgATcJh"
@@ -29,7 +25,8 @@ private:
     QString createRandom();
     QString makeSign(QString &text, QString &salt);
 
-private:
+    QString appId();
+    QString appSecert();
 };
 
 #endif // BAIDULANGPROVIDER_H

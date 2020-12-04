@@ -1,4 +1,5 @@
-import QtQuick 2.0
+import QtQuick 2.15
+import QtQuick.Controls 2.15
 
 import UiBase 1.0
 import "qrc:/qml"
@@ -6,7 +7,8 @@ import "qrc:/qml/styles"
 import "qrc:/js/XFunctions.js" as Functions
 
 Rectangle {
-    property int currentEngine: viewModel.currentEngine
+    property var currentEngine: viewModel.currentEngine
+    property var newEngine: viewModel.currentEngine
     anchors.fill: parent
 
     XText {
@@ -39,8 +41,8 @@ Rectangle {
                 anchors.bottomMargin: Destiny.dp(4)
 
                 color: Functions.backgroundColor(itemMouseArea)
-                border.width: currentEngine == modelData.engine ? Destiny.dp(2) : 0
-                border.color: currentEngine == modelData.engine ? "#4284F3" : "transparent"
+                border.width: newEngine === modelData.engine ? Destiny.dp(2) : 0
+                border.color: newEngine === modelData.engine ? "#4284F3" : "transparent"
                 radius: Destiny.dp(8)
 
                 Behavior on border.color {
@@ -81,19 +83,49 @@ Rectangle {
         }
     }
 
-    SettingButtonBar {
-        id: buttonBar
-        width: parent.width
-        height: Destiny.dp(48)
-        anchors.bottom: parent.bottom
-        anchors.bottomMargin: Destiny.dp(24)
-        onCancelBtnClick: {
+    Popup {
+        id: dialog
+        width: Destiny.dp(320)
+        height: Destiny.dp(164)
+        y: (parent.height - height) / 2
+
+        background: XShadow { }
+
+        contentItem: Rectangle {
+            XText {
+                width: parent.width
+                height: Destiny.dp(64)
+                verticalAlignment: Text.AlignVCenter
+                horizontalAlignment: Text.AlignHCenter
+                xStyle: XTextStyleBlack { size: XTextStyle.Size.Content }
+                text: "切换引擎需重启应用，确定要切换吗？"
+            }
+
+            SettingButtonBar {
+                id: buttonBar
+                width: parent.width
+                height: Destiny.dp(48)
+                anchors.bottom: parent.bottom
+                isCancelVisible: false
+                onOkBtnClick: {
+                    rootWidget.close()
+                    viewModel.switchEngine(newEngine)
+                }
+            }
         }
-        onOkBtnClick: {
-        }
+
+    }
+
+    XHandler {
+        id: handler
     }
 
     function selectEngine(engine) {
-        currentEngine = engine
+        newEngine = engine
+        if (currentEngine !== engine) {
+            handler.delay(500, function() {
+                dialog.open()
+            })
+        }
     }
 }

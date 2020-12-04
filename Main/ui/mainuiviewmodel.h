@@ -5,8 +5,6 @@
 #include <QVariant>
 
 #include <QAction>
-#include <QProcess>
-#include <QApplication>
 
 #include <core/translator.h>
 

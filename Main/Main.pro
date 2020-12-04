@@ -7,6 +7,7 @@ CONFIG += c++17
 
 include(../config.pri)
 RC_ICONS = "Translation.ico"
+win32: QMAKE_CXXFLAGS += /utf-8
 
 # The following define makes your compiler emit warnings if you use
 # any Qt feature that has been marked deprecated (the exact warnings
@@ -29,9 +30,9 @@ HEADERS += \
     mainwindow.h
 
 include(core/core.pri)
-include(baidu/baidu.pri)
-include(google/google.pri)
-include(youdao/youdao.pri)
+include(provider/baidu/baidu.pri)
+include(provider/google/google.pri)
+include(provider/youdao/youdao.pri)
 include(utils/utils.pri)
 include(ui/ui.pri)
 include(http/http.pri)

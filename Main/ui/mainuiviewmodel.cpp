@@ -1,6 +1,8 @@
 #include "mainuiviewmodel.h"
 #include "settingsview.h"
 
+#include <QProcess>
+#include <QApplication>
 #include <QTimer>
 
 MainUiViewModel::MainUiViewModel(QObject *parent)
@@ -119,6 +121,7 @@ void MainUiViewModel::translate(QString input)
 void MainUiViewModel::startSetting()
 {
     SettingsView *settings = new SettingsView;
+    settings->setAttribute(Qt::WA_ShowModal);
     settings->show();
 }
 

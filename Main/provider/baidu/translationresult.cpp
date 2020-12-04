@@ -1,5 +1,7 @@
 #include "translationresult.h"
+#include "http/httpbasic.h"
 
+REGISTER_JSON_LIST_CONVERTERS(ResultItem)
 
 ResultItem::ResultItem()
 {

@@ -42,6 +42,7 @@ private:
     HttpManager(QString url, QNetworkAccessManager::Operation operation,
                 QHttpMultiPart::ContentType contentType = QHttpMultiPart::FormDataType);
 
+    QNetworkAccessManager *instance();
 
     QString makeQuery();
     QNetworkReply *startRequest();

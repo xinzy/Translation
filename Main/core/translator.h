@@ -4,12 +4,12 @@
 #include "langprovider.h"
 #include "language.h"
 #include "translationengine.h"
-#include "config.h"
 
+#include <utils/config.h>
 #include <utils/utils.h>
-#include <baidu/baidulangprovider.h>
-#include <google/googlelangprovider.h>
-#include <youdao/youdaolangprovider.h>
+#include <provider/baidu/baidulangprovider.h>
+#include <provider/google/googlelangprovider.h>
+#include <provider/youdao/youdaolangprovider.h>
 
 #include <QObject>
 #include <QSettings>

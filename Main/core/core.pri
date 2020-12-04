@@ -1,6 +1,5 @@
 
 SOURCES += \
-    $$PWD/config.cpp \
     $$PWD/exception.cpp \
     $$PWD/langprovider.cpp \
     $$PWD/language.cpp \
@@ -8,7 +7,6 @@ SOURCES += \
     $$PWD/translator.cpp
 
 HEADERS += \
-    $$PWD/config.h \
     $$PWD/exception.h \
     $$PWD/langprovider.h \
     $$PWD/language.h \

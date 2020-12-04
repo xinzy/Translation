@@ -2,9 +2,6 @@
 #define YOUDAOLANGPROVIDER_H
 
 #include <core/langprovider.h>
-#include <http/httpmanager.h>
-
-#include "youdaotranslateresult.h"
 
 #define YOUDAO_APP_ID "229d103f10e5a0dc"
 #define YOUDAO_APP_SECERT "5v0kkMOsGQm8VygPIJ2r79fGwi0kq8A7"
@@ -21,6 +18,9 @@ public:
 
 private:
     QString makeSign(QString &input, QString &salt, QString &timestamp);
+
+    QString appId();
+    QString appSecert();
 };
 
 #endif // YOUDAOLANGPROVIDER_H

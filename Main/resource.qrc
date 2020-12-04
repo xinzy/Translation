@@ -3,5 +3,6 @@
         <file>resource/icon/baidu.png</file>
         <file>resource/icon/google.png</file>
         <file>resource/icon/youdao.png</file>
+        <file>resource/icon/icon.png</file>
     </qresource>
 </RCC>

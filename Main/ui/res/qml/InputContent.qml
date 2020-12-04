@@ -1,4 +1,4 @@
-import QtQuick 2.0
+import QtQuick 2.15
 import QtQuick.Controls 2.15
 
 import UiBase 1.0
@@ -30,5 +30,7 @@ Item {
         enabled: enableInput
         placeholderText: placeholderText
         text: parent.text
+
+        onTextChanged: parent.text = text
     }
 }

@@ -1,7 +1,25 @@
 #include "httpmanager.h"
 
+#include <utils/config.h>
 
-QNetworkAccessManager *HttpManager::sNetworkManager = new QNetworkAccessManager;
+#include <QNetworkProxy>
+
+QNetworkAccessManager *HttpManager::sNetworkManager = nullptr;
+
+
+QNetworkAccessManager *HttpManager::instance()
+{
+    if (sNetworkManager) {
+        return sNetworkManager;
+    }
+    sNetworkManager = new QNetworkAccessManager;
+    if (Config::instance()->isEnableProxy()) {
+        Proxy proxy = Config::instance()->proxy();
+        QNetworkProxy p(QNetworkProxy::HttpProxy, proxy.url, proxy.port.toInt(), proxy.username, proxy.password);
+        sNetworkManager->setProxy(p);
+    }
+    return sNetworkManager;
+}
 
 HttpManager *HttpManager::get(QString url)
 {
@@ -165,14 +183,14 @@ QNetworkReply *HttpManager::startRequest()
         QNetworkRequest request(uri);
         switch (mOperation) {
         case QNetworkAccessManager::HeadOperation:
-            reply = sNetworkManager->head(request);
+            reply = instance()->head(request);
             break;
         case QNetworkAccessManager::DeleteOperation:
-            reply = sNetworkManager->deleteResource(request);
+            reply = instance()->deleteResource(request);
             break;
         case QNetworkAccessManager::GetOperation:
         default:
-            reply = sNetworkManager->get(request);
+            reply = instance()->get(request);
             break;
         }
     } else {
@@ -180,9 +198,9 @@ QNetworkReply *HttpManager::startRequest()
         QNetworkRequest request(uri);
         if (mUploadFile != nullptr) {
             if (mOperation == QNetworkAccessManager::PostOperation) {
-                reply = sNetworkManager->post(request, mUploadFile);
+                reply = instance()->post(request, mUploadFile);
             } else {
-                reply = sNetworkManager->put(request, mUploadFile);
+                reply = instance()->put(request, mUploadFile);
             }
         } else if (mHasMultiPart) {
             if (!mParam.isEmpty()) {
@@ -193,16 +211,16 @@ QNetworkReply *HttpManager::startRequest()
                 }
             }
             if (mOperation == QNetworkAccessManager::PostOperation) {
-                reply = sNetworkManager->post(request, &mMultiPart);
+                reply = instance()->post(request, &mMultiPart);
             } else {
-                reply = sNetworkManager->put(request, &mMultiPart);
+                reply = instance()->put(request, &mMultiPart);
             }
         } else {
             QString query = makeQuery();
             if (mOperation == QNetworkAccessManager::PostOperation) {
-                reply = sNetworkManager->post(request, query.toUtf8());
+                reply = instance()->post(request, query.toUtf8());
             } else {
-                reply = sNetworkManager->put(request, query.toUtf8());
+                reply = instance()->put(request, query.toUtf8());
             }
         }
     }

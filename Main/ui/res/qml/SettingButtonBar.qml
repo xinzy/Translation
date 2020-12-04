@@ -1,4 +1,4 @@
-import QtQuick 2.0
+import QtQuick 2.15
 
 import UiBase 1.0
 import "qrc:/qml"
@@ -9,6 +9,7 @@ Item {
     property string cancelText: "取消"
     property string okText: "确定"
     property bool isOkEnabled: true
+    property bool isCancelVisible: true
 
     signal okBtnClick()
     signal cancelBtnClick()
@@ -30,6 +31,7 @@ Item {
         anchors.right: okBtn.left
         anchors.rightMargin: Destiny.dp(16)
         xStyle: XButtonStyleGhostSecondary { size: XButtonStyle.Size.S }
+        visible: isCancelVisible
         text: cancelText
         onClicked: {
             cancelBtnClick()

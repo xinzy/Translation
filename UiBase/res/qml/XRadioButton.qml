@@ -1,40 +1,47 @@
-import QtQuick 2.0
-import QtQuick.Controls 1.4
-import QtQuick.Controls.Styles 1.4
+import QtQuick 2.15
+import QtQuick.Controls 2.15
 
 import UiBase 1.0
-import "./styles"
+import "qrc:/js/XConst.js" as Const
 
 RadioButton {
+    id: control
 
-    style: RadioButtonStyle {
-        indicator: Rectangle {
-            width: Destiny.dp(20)
-            height: Destiny.dp(20)
-            radius: Destiny.dp(10)
-            border.color: control.activeFocus ? "darkblue" : "gray"
-            border.width: 1
-            Rectangle {
-                anchors.fill: parent
-                visible: control.checked
-                color: "#555"
-                radius: 8
-                anchors.margins: 4
-            }
-        }
-        label: XText {
-            width: implicitWidth
-            height: implicitHeight
-            xStyle: XTextStyleBlack { size: XTextStyle.Size.AssistPrimary }
-            text: control.text
+    property var indicatorSize: Destiny.dp(18)
+    property int textSize: Destiny.dp(16)
 
-            XMouseArea {
-                anchors.fill: parent
-                onClicked: {
-                    control.checked = true
-                }
-            }
+    font.family: Const.DefaultFont
+    font.pixelSize: textSize
+
+    indicator: Rectangle {
+        implicitWidth: indicatorSize
+        implicitHeight: indicatorSize
+
+        x: control.text ? (control.mirrored ? control.width - width - control.rightPadding : control.leftPadding) : control.leftPadding + (control.availableWidth - width) / 2
+        y: control.topPadding + (control.availableHeight - height) / 2
+
+        radius: width / 2
+        color: control.down ? control.palette.light : control.palette.base
+        border.width: control.visualFocus ? 2 : 1
+        border.color: control.visualFocus ? control.palette.highlight : control.palette.mid
+
+        Rectangle {
+            x: (parent.width - width) / 2
+            y: (parent.height - height) / 2
+            width: indicatorSize * 2 / 3
+            height: indicatorSize * 2 / 3
+            radius: width / 2
+            color: control.palette.text
+            visible: control.checked
         }
-        spacing: Destiny.dp(8)
+    }
+
+    contentItem: Text {
+        leftPadding: control.indicator && !control.mirrored ? control.indicator.width + control.spacing : 0
+        rightPadding: control.indicator && control.mirrored ? control.indicator.width + control.spacing : 0
+
+        text: control.text
+        font: control.font
+        color: control.palette.windowText
     }
 }
